@@ -8,8 +8,8 @@ var VistaInicio = Backbone.View.extend({
 				trigger: true
 			});
 		},
-		"click #btnVistaListarClientes": function(evt){
-			routerPrincipal.navigate("listarCliente", {
+		"click #btnVistaListadoClientes": function(evt){
+			routerPrincipal.navigate("listarClientes", {
 				trigger: true
 			});
 		}
@@ -35,19 +35,19 @@ var VistaRegistroCliente = Backbone.View.extend({
 				id:$("#id").val()
 			});
 			cliente.set({
-				id:$("#nombre").val()
+				nombre:$("#nombre").val()
 			});
 			cliente.set({
-				id:$("#apellido").val()
+				apellido:$("#apellido").val()
 			});
 			cliente.set({
-				id:$("#edad").val()
+				edad:$("#edad").val()
 			});
 			cliente.set({
-				id:$("#telefono").val()
+				telefono:$("#telefono").val()
 			});
 			cliente.set({
-				id:$("#email").val()
+				email:$("#email").val()
 			});
 			routerPrincipal.clientes.add(cliente);
 			alert("Cliente registrado con Exito!!!");
@@ -62,6 +62,30 @@ var VistaRegistroCliente = Backbone.View.extend({
 	},
 	render: function(){
 		$(this.el).html(this.template());
+		return this;
+	}
+});
+var VistaListadoClientes = Backbone.View.extend({
+	el: $('#contenedorVistas'),
+	template: _.template($("#plantillaListadoClientes").html()),
+	events: {
+		"click #btnSalir":function(evt){
+			routerPrincipal.navigate("",{
+				trigger:true
+			});
+		}
+	},
+	render:function(){
+		$(this.el).html(this.template());
+		this.collection.each(function(cliente){
+			$("#listaClientes").append(
+				'<tr><td>'+cliente.get("id")+'</td><td>'+
+				cliente.get("nombre")+'</td><td>'+
+				cliente.get("apellido")+'</td><td>'+
+				'<a href=#mostrarCliente/'+cliente.get("id")+'>Mostrar</a></td><td>'+
+				'<a href=#eliminarCliente/'+cliente.get("id")+'>Eliminar</a></td></tr>'
+				);
+		},this);
 		return this;
 	}
 });

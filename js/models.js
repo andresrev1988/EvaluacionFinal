@@ -3,7 +3,7 @@ var Cliente = Backbone.Model.extend({
 		id:0,
 		nombre:"",
 		apellido:"",
-		edad:0,
+		edad:"",
 		telefono:"",
 		email:""
 	}
