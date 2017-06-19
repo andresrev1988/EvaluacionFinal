@@ -30,8 +30,8 @@ var VistaRegistroCliente = Backbone.View.extend({
 		},
 		"click #btnRegistrarCliente":function(evt){
 			evt.preventDefault();			
-			var cliente = new Cliente();
-			cliente.fetch();			
+			var cliente = new Cliente();			
+			
 			cliente.set({
 				id:$("#id").val()
 			});
