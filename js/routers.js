@@ -1,11 +1,11 @@
 var RouterPrincipal = Backbone.Router.extend({
 	initialize: function(el){
-			this.clientes = new Clientes();
+			this.clientes = new Clientes();			
 			this.vistaInicio = new VistaInicio();
 			this.vistaRegistroCliente = new VistaRegistroCliente();
 			this.vistaListadoClientes = new VistaListadoClientes({
 				collection: this.clientes
-			});
+			});			
 	},
 	routes: {
 		"": "inicio",		

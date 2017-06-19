@@ -1,4 +1,4 @@
 $(document).ready(function(){
-	routerPrincipal = new RouterPrincipal();
+	routerPrincipal = new RouterPrincipal();	
 	Backbone.history.start();
 });

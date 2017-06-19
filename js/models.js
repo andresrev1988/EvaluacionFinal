@@ -1,4 +1,4 @@
-var Cliente = Backbone.Model.extend({
+var Cliente = Backbone.Model.extend({	
 	defaults: {
 		id:0,
 		nombre:"",

@@ -21,7 +21,7 @@ var VistaInicio = Backbone.View.extend({
 });
 var VistaRegistroCliente = Backbone.View.extend({
 	el: $('#contenedorVistas'),
-	template: _.template($("#plantillaRegistroCliente").html()),
+	template: _.template($("#plantillaRegistroCliente").html()),	
 	events: {
 		"click #btnSalir": function(evt){
 			routerPrincipal.navigate("",{
@@ -29,8 +29,9 @@ var VistaRegistroCliente = Backbone.View.extend({
 			});
 		},
 		"click #btnRegistrarCliente":function(evt){
-			evt.preventDefault();
+			evt.preventDefault();			
 			var cliente = new Cliente();
+			cliente.fetch();			
 			cliente.set({
 				id:$("#id").val()
 			});
@@ -50,6 +51,7 @@ var VistaRegistroCliente = Backbone.View.extend({
 				email:$("#email").val()
 			});
 			routerPrincipal.clientes.add(cliente);
+			cliente.save();
 			alert("Cliente registrado con Exito!!!");
 			cont_id++;
 			$("#id").val(cont_id);
