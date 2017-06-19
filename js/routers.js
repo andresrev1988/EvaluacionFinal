@@ -11,7 +11,7 @@ var RouterPrincipal = Backbone.Router.extend({
 		"": "inicio",		
 		"registrarCliente":"mostrarRegistroCliente",		
 		"listarClientes":"mostrarListadoClientes",
-		"mostrarCliente/:idCliente": "mostrarCliente",
+		"mostrarCliente/:idCliente": "mostrarCliente",		
 		"eliminarCliente/:idCliente": "eliminarCliente"
 	},
 	inicio : function(){
@@ -37,8 +37,11 @@ var RouterPrincipal = Backbone.Router.extend({
 		$("#modalMostrarCliente").modal('show');
 	},
 	eliminarCliente : function(idCliente){
-		this.model.destroy();
+		var cliente = this.vistaListadoClientes.collection.findWhere({
+			id: idCliente
+		});
+		this.vistaListadoClientes.collection.remove(cliente);
+		this.vistaListadoClientes.render();
 	}
-
 });
 

@@ -67,14 +67,14 @@ var VistaRegistroCliente = Backbone.View.extend({
 });
 var VistaListadoClientes = Backbone.View.extend({
 	el: $('#contenedorVistas'),
-	template: _.template($("#plantillaListadoClientes").html()),
+	template: _.template($("#plantillaListadoClientes").html()),		
 	events: {
 		"click #btnSalir":function(evt){
 			routerPrincipal.navigate("",{
 				trigger:true
 			});
-		}
-	},
+		}		
+	},	
 	render:function(){
 		$(this.el).html(this.template());
 		this.collection.each(function(cliente){
